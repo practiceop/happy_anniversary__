@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary, My Love!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a0033, #4d004d, #330033);
+            background-size: 400% 400%;
+            animation: gradientBackground 20s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            padding: 10px;
+        }
+        
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #f5c5d9;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 0px #9e005d, 5px 5px 10px rgba(0,0,0,0.5);
+            animation: glow 3s ease-in-out infinite;
+            z-index: 100;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073; }
+            50% { text-shadow: 0 0 5px #fff, 0 0 15px #ff4da6, 0 0 25px #ff4da6, 0 0 30px #ff4da6; }
+        }
+        
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ffd1dc;
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-height: calc(100vh - 140px);
+            z-index: 10;
+        }
+        
+        .gallery-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 12px;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .photo-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 0;
+            padding-bottom: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .photo-card:hover {
+            transform: scale(1.1) rotate(1deg);
+            z-index: 20;
+            box-shadow: 0 10px 30px rgba(255, 175, 204, 0.8);
+            border-color: rgba(255, 175, 204, 0.8);
+        }
+        
+        .photo-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.5s ease;
+        }
+        
+        .photo-card:hover img {
+            filter: brightness(1.1);
+        }
+        
+        .photo-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.85) 100%);
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.4s, transform 0.4s;
+            transform: translateY(10px);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .photo-card:hover .caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .message-container {
+            width: 90%;
+            max-width: fit-content;
+            padding: 30px;
+            margin-bottom: 30px;
+            background: rgba(20, 0, 20, 0.6);
+            border-radius: 20px;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.7rem;
+            color: #ffe6ee;
+            box-shadow: 0 0 40px rgba(255, 102, 204, 0.5);
+            z-index: 100;
+            animation: shine 5s ease-in-out infinite;
+            border: 2px solid #ff99cc;
+            backdrop-filter: blur(5px);
+        }
+        
+        .message-container p {
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+        
+        .message-signature {
+            font-size: 2rem;
+            margin-top: 20px;
+            color: #ff99cc;
+            text-shadow: 0 0 5px #ff3385;
+        }
+        
+        @keyframes shine {
+            0% { box-shadow: 0 0 20px rgba(255, 102, 204, 0.5); }
+            50% { box-shadow: 0 0 50px rgba(255, 102, 204, 0.8); }
+            100% { box-shadow: 0 0 20px rgba(255, 102, 204, 0.5); }
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 2.5rem;
+            color: #ff3385;
+            opacity: 0;
+            animation: floatHeart 7s ease-in-out;
+            text-shadow: 0 0 10px #ff3385, 0 0 20px #ff3385;
+        }
+        
+        @keyframes floatHeart {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-300px) rotate(20deg);
+            }
+        }
+        
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        #starCanvas {
+            z-index: 1;
+        }
+        
+        #roseCanvas {
+            z-index: 2;
+        }
+        
+        .floating-rose {
+            position: absolute;
+            font-size: 2rem;
+            z-index: 3;
+            animation: floatRose 20s linear infinite;
+            opacity: 0.7;
+            text-shadow: 0 0 8px rgba(255, 51, 153, 0.7);
+        }
+        
+        @keyframes floatRose {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-50px) rotate(360deg);
+            }
+        }
+        
+        .anniversary-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 3.5rem;
+            animation: iconPulse 3s ease-in-out infinite;
+            z-index: 100;
+            text-shadow: 0 0 10px #ff3385;
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .counter {
+            font-family: 'Montserrat', sans-serif;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 102, 204, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .counter-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ff99cc;
+        }
+        
+        .counter-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .counter-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="starCanvas"></canvas>
+    <canvas id="roseCanvas"></canvas>
+    
+    <h1 class="title">✨ Happy Anniversary, My Love! ✨</h1>
+    <h2 class="subtitle">Another year of beautiful memories together</h2>
+    
+    <div class="content-container">
+        
+        
+        <div class="gallery-container">
+            <div class="photo-grid" id="photoGrid"></div>
+        </div>
+        
+        <div class="message-container">
+            <p>To the love of my life,</p>
+            <p>Every moment with you is a treasure. Each day, I fall more deeply in love with your smile, your laugh, and your beautiful soul.</p>
+            <p>Today we celebrate not just another year together, but all the dreams we've shared, challenges we've overcome, and the countless ways you've made my life complete.</p>
+            <p>Here's to many more years of love, adventure, and growing together.</p>
+            <p class="message-signature">Forever and always yours ❤️</p>
+        </div>
+    </div>
+    
+    <div class="anniversary-icon">💑</div>
+    
+    <audio id="loveSound" src="/api/placeholder/400/320" preload="auto"></audio>
+    
+    <script>
+        // Images placeholders - in a real scenario, replace with actual image paths
+        const images = [
+            { src: "pic1.jpeg" },
+            { src: "pic2.jpeg" },
+            { src: "pic3.jpeg" },
+            { src: "pic4.jpeg"},
+            { src: "pic5.jpeg" },
+            { src: "pic6.jpeg" }
+        ];
+        
+        // Set up photo grid
+        const photoGrid = document.getElementById('photoGrid');
+        
+        images.forEach((image, index) => {
+            const card = document.createElement('div');
+            card.className = 'photo-card';
+            
+            const img = document.createElement('img');
+            img.src = image.src;
+            img.alt = `Our memory ${index + 1}`;
+            
+            const caption = document.createElement('div');
+            caption.className = 'caption';
+            caption.textContent = image.caption;
+            
+            card.appendChild(img);
+            card.appendChild(caption);
+            photoGrid.appendChild(card);
+        });
+        
+        // Create floating roses
+        const roseEmojis = ['🌹', '❤️', '💕', '💖', '💗', '💘'];
+        for (let i = 0; i < 10; i++) {
+            const rose = document.createElement('div');
+            rose.className = 'floating-rose';
+            rose.innerHTML = roseEmojis[Math.floor(Math.random() * roseEmojis.length)];
+            rose.style.left = `${Math.random() * 90 + 5}%`;
+            rose.style.animationDuration = `${Math.random() * 15 + 15}s`;
+            rose.style.animationDelay = `${Math.random() * 10}s`;
+            rose.style.fontSize = `${Math.random() * 1.5 + 1.5}rem`;
+            document.body.appendChild(rose);
+        }
+        
+        // Days counter calculation
+        const daysCounter = document.getElementById('daysCounter');
+        // For a real application, replace with actual anniversary date
+        const startDate = new Date(new Date().getFullYear() - 1, new Date().getMonth(), new Date().getDate());
+        const today = new Date();
+        const daysCount = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        daysCounter.textContent = daysCount;
+        
+        // Starry background
+        const starCanvas = document.getElementById('starCanvas');
+        const starCtx = starCanvas.getContext('2d');
+        const stars = [];
+        
+        function resizeCanvas() {
+            starCanvas.width = window.innerWidth;
+            starCanvas.height = window.innerHeight;
+            
+            roseCanvas.width = window.innerWidth;
+            roseCanvas.height = window.innerHeight;
+            
+            createStars();
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        function createStars() {
+            stars.length = 0;
+            const density = Math.floor((starCanvas.width * starCanvas.height) / 1000);
+            
+            for (let i = 0; i < density; i++) {
+                stars.push({
+                    x: Math.random() * starCanvas.width,
+                    y: Math.random() * starCanvas.height,
+                    radius: Math.random() * 1.5 + 0.5,
+                    opacity: Math.random() * 0.8 + 0.2,
+                    pulse: Math.random() * 0.1 + 0.05,
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
+        }
+        
+        function drawStars() {
+            starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+            
+            const now = Date.now() / 1000;
+            
+            for (const star of stars) {
+                const flicker = Math.sin(now * star.pulse + star.phase) * 0.5 + 0.5;
+                starCtx.beginPath();
+                starCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                starCtx.fillStyle = `rgba(255, 255, 255, ${star.opacity * flicker})`;
+                starCtx.fill();
+            }
+            
+            requestAnimationFrame(drawStars);
+        }
+        
+        // Rose petals animation
+        const roseCanvas = document.getElementById('roseCanvas');
+        const roseCtx = roseCanvas.getContext('2d');
+        const petals = [];
+        const petalColors = ['#ff99cc', '#ff66b3', '#ff3399', '#ff0080', '#cc0066', '#990033'];
+        
+        function createPetal() {
+            if (petals.length < 50) {
+                petals.push({
+                    x: Math.random() * roseCanvas.width,
+                    y: -20,
+                    size: Math.random() * 10 + 10,
+                    color: petalColors[Math.floor(Math.random() * petalColors.length)],
+                    speed: Math.random() * 2 + 1,
+                    wave: Math.random() * 5 + 2,
+                    waveSpeed: Math.random() * 0.05 + 0.01,
+                    angle: Math.random() * Math.PI * 2,
+                    rotation: Math.random() * 0.05 - 0.025,
+                    opacity: Math.random() * 0.6 + 0.4,
+                    phase: Math.random() * Math.PI * 2
+                });
+            }
+        }
+        
+        function drawPetals() {
+            roseCtx.clearRect(0, 0, roseCanvas.width, roseCanvas.height);
+            
+            const now = Date.now() / 1000;
+            
+            for (let i = 0; i < petals.length; i++) {
+                const p = petals[i];
+                
+                roseCtx.save();
+                roseCtx.translate(
+                    p.x + Math.sin(now * p.waveSpeed + p.phase) * p.wave, 
+                    p.y
+                );
+                roseCtx.rotate(p.angle);
+                roseCtx.globalAlpha = p.opacity;
+                
+                // Draw petal shape
+                roseCtx.beginPath();
+                roseCtx.moveTo(0, 0);
+                roseCtx.bezierCurveTo(
+                    p.size / 2, p.size / 3,
+                    p.size, p.size / 2,
+                    0, p.size
+                );
+                roseCtx.bezierCurveTo(
+                    -p.size, p.size / 2,
+                    -p.size / 2, p.size / 3,
+                    0, 0
+                );
+                roseCtx.fillStyle = p.color;
+                roseCtx.fill();
+                
+                roseCtx.restore();
+                
+                p.y += p.speed;
+                p.angle += p.rotation;
+                
+                // Remove petals when off-screen
+                if (p.y > roseCanvas.height) {
+                    petals.splice(i, 1);
+                    i--;
+                }
+            }
+            
+            requestAnimationFrame(drawPetals);
+        }
+        
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤';
+            heart.style.left = `${Math.random() * 80 + 10}%`;
+            heart.style.bottom = `10px`;
+            document.body.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+        
+        // Initialize everything when page loads
+        window.addEventListener('load', () => {
+            // Start stars
+            drawStars();
+            
+            // Start rose petals
+            setInterval(createPetal, 300);
+            drawPetals();
+            
+            // Create floating hearts periodically
+            setInterval(createHeart, 2000);
+            
+            // Play background music
+            const loveSound = document.getElementById('loveSound');
+            loveSound.volume = 0.5;
+            loveSound.loop = true;
+            
+            // Ensure user interaction before playing sound
+            document.addEventListener('click', () => {
+                // loveSound.play();
+                // Commented out since we don't have actual audio files
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
